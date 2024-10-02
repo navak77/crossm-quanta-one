@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Home - Airline Reservation System{% endblock %}
+{% block content %}
+<div class="jumbotron">
+  <h1 class="display-4">Welcome to the Airline Reservation System!</h1>
+  <p class="lead">Experience a frictionless and personalized journey.</p>
+  <hr class="my-4">
+  {% if 'user' in session %}
+    <p>Glad to have you back, {{ session['user'] }}.</p>
+    <a class="btn btn-primary btn-lg" href="{{ url_for('view_flights') }}" role="button">View Flights</a>
+  {% else %}
+    <a class="btn btn-primary btn-lg" href="{{ url_for('login') }}" role="button">Login</a>
+    <a class="btn btn-secondary btn-lg" href="{{ url_for('register') }}" role="button">Register</a>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.table th, .table td {
+    vertical-align: middle !important;
+}
+
+.jumbotron {
+    background-color: #e9ecef;
+}
+
+h2 {
+    margin-top: 20px;
+}
