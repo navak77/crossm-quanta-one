@@ -33,7 +33,7 @@ Python 3.x
 Flask
 SQLite
 Step 1: Clone the Repository 
-git clone https://github.com/yourusername/airline-travel-genai.git
+git clone [https://github.com/yourusername/airline-travel-genai.git](https://github.com/navak77/crossm-quanta-one)
 cd airline-travel-genai
 Step 2: Install Dependencies
 Create a virtual environment and install the required dependencies:
