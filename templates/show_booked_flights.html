@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Booked Flights - Airline Reservation System{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Your Booked Flights</h2>
+    {% if flights %}
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Flight ID</th>
+                    <th>Origin</th>
+                    <th>Destination</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for flight in flights %}
+                <tr>
+                    <td>{{ flight[0] }}</td>
+                    <td>{{ flight[1] }}</td>
+                    <td>{{ flight[2] }}</td>
+                    <td>${{ flight[3] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p class="text-center">You haven't booked any flights yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

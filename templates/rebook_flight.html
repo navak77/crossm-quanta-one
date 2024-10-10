@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Rebook Flight - Airline Reservation System{% endblock %}
+{% block content %}
+<h1 class="text-center mt-5">Rebook Your Flight</h1>
+<div class="container">
+    <ul class="list-group">
+        {% for flight in flights %}
+        <li class="list-group-item">
+            Flight to {{ flight[2] }} - Departure: {{ flight[4] }} 
+            <a href="{{ url_for('book_flight', flight_id=flight[0]) }}" class="btn btn-success float-right">Rebook</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

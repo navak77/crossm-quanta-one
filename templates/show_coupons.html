@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Your Coupons{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Your Coupons</h2>
+    <div class="row">
+        {% if coupons %}
+            {% for coupon in coupons %}
+            <div class="col-md-4 mb-4">
+                <div class="dashboard-box">
+                    <i class="fas fa-gift fa-2x mb-3"></i>
+                    <h4>Coupon: {{ coupon[0] }}</h4>
+                    <p>Discount: ${{ coupon[1] }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No coupons available</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
