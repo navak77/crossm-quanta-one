@@ -1,106 +1,153 @@
-/* General body styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background: url('airplane.jpg') no-repeat center center fixed;
+    background-position: center;
     background-size: cover;
-    background-blend-mode: overlay;
-    background-color: rgba(55, 98, 143, 0.7); /* Increased opacity to keep the blue tint */
+    background-color: #f8f9fa;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    color: white; /* Set default text color to white for better visibility */
+    overflow-x: hidden;
 }
 
-/* Navbar styling */
-.navbar {
-    background-color: #343a40;
-    padding: 15px;
-}
-
-.navbar-brand {
-    font-weight: bold;
-    color: #fff;
-}
-
-.navbar .nav-link {
-    color: #fff;
-}
-
-/* Hero section styling */
+/* Hero Section Styling */
 .hero-section {
-    background-image: url('../images/A_vibrant_and_modern_airline-themed_homepage_banne.png'); /* Use your actual image path */
+    background-image: url('../css/airplane.jpg');
     background-size: cover;
     background-position: center;
-    height: 600px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 120px 20px;
     text-align: center;
-    padding: 20px;
-    position: relative;
+    color: white;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 .hero-text h1 {
     font-size: 3.5rem;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    color: white; /* Ensure text color is set explicitly */
+    font-weight: 700;
+    margin-bottom: 15px;
 }
 
-.hero-text p {
+.hero-text p.lead {
     font-size: 1.5rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    color: white; /* Ensure text color is set explicitly */
-}
-
-/* Info box styling */
-.info-box {
-    background-color: white;
-    padding: 20px;
-    text-align: center;
+    font-weight: 300;
     margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    color: black; /* Set text color to black to ensure readability against white background */
 }
 
-.info-box i {
-    font-size: 3rem;
-    color: #007bff;
-    margin-bottom: 10px;
-}
-
-.info-box h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.info-box p {
-    font-size: 1rem;
-    color: #555;
-}
-
-/* Button colors */
-.btn-primary, .btn-warning, .btn-info, .btn-success {
-    padding: 10px 20px;
+.hero-buttons .btn {
+    margin: 10px;
+    padding: 12px 30px;
     font-size: 1.1rem;
+    border-radius: 50px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-    .hero-text h1 {
-        font-size: 2.5rem;
-    }
+.hero-buttons .btn:hover {
+    background-color: #007bff;
+    transform: translateY(-5px);
+}
 
-    .hero-text p {
-        font-size: 1.2rem;
-    }
+/* Info Box Styling */
+.info-box {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
 
-    .info-box i {
-        font-size: 2rem;
-    }
+.info-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
 
-    .info-box h3 {
-        font-size: 1.2rem;
-    }
+/* Dashboard Box Styling */
+.dashboard-box {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    transition: box-shadow 0.3s, transform 0.3s;
+    padding: 20px;
+}
+
+.dashboard-box:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+/* Chat Window and Container */
+#chat-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 10px;
+}
+
+#chat-window {
+    border: 1px solid #ccc;
+    padding: 15px;
+    height: 400px;
+    overflow-y: scroll;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Message Styles */
+.user-message {
+    text-align: right;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #d1e7ff;
+    border-radius: 8px;
+    display: inline-block;
+    max-width: 80%;
+    font-weight: 500;
+    word-wrap: break-word;
+}
+
+.bot-message {
+    text-align: left;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    display: inline-block;
+    max-width: 80%;
+    font-weight: 500;
+    word-wrap: break-word;
+}
+
+/* Chat Form Styling */
+#chat-form {
+    display: flex;
+    margin-top: 10px;
+}
+
+#user-input {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s;
+}
+
+#user-input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Chat Form Button */
+#chat-form button {
+    padding: 12px 25px;
+    margin-left: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#chat-form button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
 }
