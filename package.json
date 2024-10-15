@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/cli": "^6.1.2",
+    "@capacitor/core": "^6.1.2",
+    "react-native-webview": "^13.12.3"
+  }
+}

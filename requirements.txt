@@ -1,0 +1,8 @@
+Flask
+opensky-api
+flask-apscheduler
+amadeus
+Flask-Mail
+bcrypt
+python-dotenv
+google-generativeai
