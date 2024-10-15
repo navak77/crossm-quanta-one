@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Special Offers - Airline Reservation System{% endblock %}
+{% block content %}
+<h1 class="text-center mt-5">Personalized Special Offers</h1>
+<div class="container">
+    <ul class="list-group">
+        {% for offer in offers %}
+        <li class="list-group-item">Flight to {{ offer[2] }} - Price: {{ offer[6] }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

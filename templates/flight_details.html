@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Flight Details{% endblock %}
+
+{% block content %}
+<h1 class="text-center mt-5">Flight Details</h1>
+<div class="container">
+    {% if flight %}
+        <h2>Live Flight Information</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Flight Number</th>
+                <td>{{ flight.callsign }}</td>
+            </tr>
+            <tr>
+                <th>Longitude</th>
+                <td>{{ flight.longitude }}</td>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td>{{ flight.latitude }}</td>
+            </tr>
+            <tr>
+                <th>Altitude (Barometric)</th>
+                <td>{{ flight.baro_altitude }}</td>
+            </tr>
+            <tr>
+                <th>Velocity</th>
+                <td>{{ flight.velocity }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ "In Air" if not flight.on_ground else "On Ground" }}</td>
+            </tr>
+        </table>
+    {% elif saved_flight %}
+        <h2>Saved Flight Information</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Airline</th>
+                <td>{{ saved_flight[0] }}</td>
+            </tr>
+            <tr>
+                <th>Flight Number</th>
+                <td>{{ saved_flight[1] }}</td>
+            </tr>
+            <tr>
+                <th>Origin</th>
+                <td>{{ saved_flight[2] }}</td>
+            </tr>
+            <tr>
+                <th>Destination</th>
+                <td>{{ saved_flight[3] }}</td>
+            </tr>
+            <tr>
+                <th>Departure Time</th>
+                <td>{{ saved_flight[4] }}</td>
+            </tr>
+            <tr>
+                <th>Arrival Time</th>
+                <td>{{ saved_flight[5] }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>${{ saved_flight[6] }}</td>
+            </tr>
+        </table>
+    {% else %}
+        <p class="text-center">No details available for this flight.</p>
+    {% endif %}
+    <a href="{{ url_for('show_booked_flights') }}" class="btn btn-secondary">Back to Booked Flights</a>
+</div>
+{% endblock %}

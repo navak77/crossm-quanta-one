@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Results</title>
+</head>
+<body>
+    <h1>Real-Time Flight Information</h1>
+    
+    {% if flights %}
+        <table border="1">
+            <tr>
+                <th>Callsign</th>
+                <th>Origin Country</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Velocity (m/s)</th>
+                <th>Altitude (m)</th>
+                <th>Heading (degrees)</th>
+            </tr>
+            {% for flight in flights %}
+            <tr>
+                <td>{{ flight.callsign }}</td>
+                <td>{{ flight.origin_country }}</td>
+                <td>{{ flight.latitude }}</td>
+                <td>{{ flight.longitude }}</td>
+                <td>{{ flight.velocity }}</td>
+                <td>{{ flight.altitude }}</td>
+                <td>{{ flight.heading }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No flights found for the selected area.</p>
+    {% endif %}
+</body>
+</html>

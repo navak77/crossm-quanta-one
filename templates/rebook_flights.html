@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Cancel & Rebook Flights{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Cancel & Rebook Your Flights</h2>
+    
+    <ul class="list-group">
+        {% for flight in flights %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <strong>Flight:</strong> {{ flight[1] }} {{ flight[2] }} <br>
+                <strong>From:</strong> {{ flight[3] }} <strong>To:</strong> {{ flight[4] }} <br>
+                <strong>Departure:</strong> {{ flight[5] }} <strong>Arrival:</strong> {{ flight[6] }} <br>
+                <strong>Price:</strong> ${{ flight[7] }}
+            </div>
+            <form method="POST" action="{{ url_for('cancel_flight', flight_id=flight[0]) }}">
+                <button type="submit" class="btn btn-danger">Cancel & Rebook</button>
+            </form>
+        </li>
+        {% else %}
+        <li class="list-group-item">
+            <p class="text-center">You have no booked flights to rebook.</p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

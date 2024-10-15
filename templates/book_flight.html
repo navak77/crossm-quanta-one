@@ -6,18 +6,17 @@
 <form action="{{ url_for('search_flights') }}" method="POST">
     <div class="form-group">
         <label for="origin">Origin (IATA Code):</label>
-        <input type="text" class="form-control" id="origin" name="origin" placeholder="e.g., HEL" required>
+        <input type="text" class="form-control" id="origin" name="origin" value="{{ request.form.origin }}" placeholder="e.g., JFK" required>
     </div>
     <div class="form-group">
         <label for="destination">Destination (IATA Code):</label>
-        <input type="text" class="form-control" id="destination" name="destination" placeholder="e.g., OUL" required>
+        <input type="text" class="form-control" id="destination" name="destination" value="{{ request.form.destination }}" placeholder="e.g., LAX" required>
     </div>
     <div class="form-group">
         <label for="departure_date">Departure Date:</label>
-        <input type="date" class="form-control" id="departure_date" name="departure_date" placeholder="e.g., 9/9/1999" required>
-
+        <input type="date" class="form-control" id="departure_date" name="departure_date" value="{{ request.form.departure_date }}" required>
     </div>
-    
+
     <button type="submit" class="btn btn-primary">Search</button>
 </form>
 
@@ -30,16 +29,22 @@
             </div>
             <div class="card-body">
                 {% for segment in flight.segments %}
-                    <h5 class="card-title">{{ segment.airline }} {{ segment.flight_number }}</h5>
+                    <h5 class="card-title">Airline: {{ segment.airline }} Flight Number: {{ segment.flight_number }}</h5>
                     <p class="card-text">
                         Departure: {{ segment.departure_airport }} at {{ segment.departure_time }}<br>
                         Arrival: {{ segment.arrival_airport }} at {{ segment.arrival_time }}
                     </p>
                     <hr>
                 {% endfor %}
+                <!-- Form to book flight -->
+                <form action="{{ url_for('book_flight') }}" method="POST">
+                    <input type="hidden" name="flight_id" value="{{ flight.flight_id }}">
+                    <input type="hidden" name="price" value="{{ flight.price }}">
+                    <input type="hidden" name="flight_data" value="{{ flight | tojson }}">
+                    <button type="submit" class="btn btn-success">Book Now</button>
+                </form>
             </div>
         </div>
     {% endfor %}
 {% endif %}
 {% endblock %}
-

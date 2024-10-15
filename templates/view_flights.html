@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Available Flights</h2>
+{% if flights %}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Flight ID</th>
+            <th>Origin Country</th>
+            <th>Destination</th>
+            <th>Status</th>
+            <th>Departure</th>
+            <th>Arrival</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for flight in flights %}
+        <tr>
+            <td>{{ flight[1] }}</td>  <!-- Flight ID (Callsign) -->
+            <td>{{ flight[2] }}</td>  <!-- Origin Country -->
+            <td>N/A</td>  <!-- Destination (if you have destination data, replace N/A) -->
+            <td>{{ flight[3] }}</td>  <!-- Status -->
+            <td>{{ flight[4] }}</td>  <!-- Departure -->
+            <td>{{ flight[5] }}</td>  <!-- Arrival -->
+            <td>${{ flight[6] }}</td>  <!-- Price (just for display, random values) -->
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No flight data available at the moment.</p>
+{% endif %}
+{% endblock %}

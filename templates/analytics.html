@@ -1,24 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}Profile{% endblock %}
+{% block title %}Analytics Dashboard{% endblock %}
 
 {% block content %}
 <div class="container mt-5">
-    <h1 class="text-center">Profile</h1>
+    <h1 class="text-center">Analytics Dashboard</h1>
 
-    <form method="POST">
-        <div class="form-group">
-            <label for="preferences">Your Preferences:</label>
-            <textarea class="form-control" id="preferences" name="preferences" rows="3">{{ preferences }}</textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Update Preferences</button>
-    </form>
-
-    <hr>
-
-    <h2>Your Flight Analytics</h2>
-
-    <h3>Flight Bookings</h3>
+    <h2>Flight Bookings</h2>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -32,15 +20,11 @@
                     <td>{{ flight_id }}</td>
                     <td>{{ count }}</td>
                 </tr>
-            {% else %}
-                <tr>
-                    <td colspan="2" class="text-center">No bookings found</td>
-                </tr>
             {% endfor %}
         </tbody>
     </table>
 
-    <h3>Coupon Usage</h3>
+    <h2>Coupon Usage</h2>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -53,10 +37,6 @@
                 <tr>
                     <td>{{ coupon_code }}</td>
                     <td>{{ count }}</td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="2" class="text-center">No coupons used</td>
                 </tr>
             {% endfor %}
         </tbody>

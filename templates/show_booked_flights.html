@@ -1,33 +1,46 @@
 {% extends "base.html" %}
-{% block title %}Booked Flights - Airline Reservation System{% endblock %}
+
+{% block title %}Booked Flights{% endblock %}
+
 {% block content %}
-<div class="container mt-5">
-    <h2 class="text-center mb-4">Your Booked Flights</h2>
-    {% if flights %}
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover">
-            <thead class="thead-dark">
-                <tr>
-                    <th>Flight ID</th>
-                    <th>Origin</th>
-                    <th>Destination</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for flight in flights %}
-                <tr>
-                    <td>{{ flight[0] }}</td>
-                    <td>{{ flight[1] }}</td>
-                    <td>{{ flight[2] }}</td>
-                    <td>${{ flight[3] }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    {% else %}
-    <p class="text-center">You haven't booked any flights yet.</p>
-    {% endif %}
+<h1 class="text-center mt-5">Your Booked Flights</h1>
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Airline</th>
+                <th>Flight Number</th>
+                <th>Origin</th>
+                <th>Destination</th>
+                <th>Departure Time</th>
+                <th>Arrival Time</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for flight in flights %}
+            <tr>
+                <td>{{ flight[1] }}</td> <!-- Airline -->
+                <td>{{ flight[2] }}</td> <!-- Flight Number -->
+                <td>{{ flight[3] }}</td> <!-- Origin -->
+                <td>{{ flight[4] }}</td> <!-- Destination -->
+                <td>{{ flight[5] }}</td> <!-- Departure Time -->
+                <td>{{ flight[6] }}</td> <!-- Arrival Time -->
+                <td>${{ flight[7] }}</td> <!-- Price -->
+                <td>{{ live_flights.get(flight[2], 'Unknown') }}</td> <!-- Status -->
+                <td>
+                    <form method="POST" action="{{ url_for('cancel_flight', flight_id=flight[0]) }}" class="d-inline">
+                        <button type="submit" class="btn btn-danger btn-sm">Cancel & Rebook</button>
+                    </form>
+                    <a href="{{ url_for('flight_details', flight_number=flight[2]) }}" class="btn btn-info btn-sm">
+                        View Details
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}

@@ -1,49 +1,55 @@
 {% extends "base.html" %}
 {% block title %}Dashboard - Airline Reservation System{% endblock %}
+
 {% block content %}
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Welcome back, {{ session['user'] }}!</h2>
+    <h2 class="text-center mb-5">Welcome back, {{ session['user'] }}!</h2>
 
-    <div class="row">
-        <div class="col-md-4 mb-4">
-            <div class="dashboard-box" data-aos="fade-up">
-                <i class="fas fa-plane-departure fa-3x mb-3"></i>
+    <div class="row justify-content-center">
+        <!-- Book Flights -->
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
+            <div class="dashboard-box text-center p-4 shadow" data-aos="fade-up">
+                <i class="fas fa-plane-departure fa-3x mb-3 text-primary"></i>
                 <h3>Book Flights</h3>
                 <p>Find the best flights and book them with a single click.</p>
-                <a href="{{ url_for('book_flight') }}" class="btn btn-primary">Book Now</a>
+                <a href="{{ url_for('search_flights') }}" class="btn btn-primary">Book Now</a>
             </div>
         </div>
 
-        <div class="col-md-4 mb-4">
-            <div class="dashboard-box" data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-ticket-alt fa-3x mb-3"></i>
+        <!-- Booked Flights -->
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
+            <div class="dashboard-box text-center p-4 shadow" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-ticket-alt fa-3x mb-3 text-info"></i>
                 <h3>Booked Flights</h3>
                 <p>View your flight history and upcoming flights.</p>
                 <a href="{{ url_for('show_booked_flights') }}" class="btn btn-info">View Flights</a>
             </div>
         </div>
 
-        <div class="col-md-4 mb-4">
-            <div class="dashboard-box" data-aos="fade-up" data-aos-delay="200">
-                <i class="fas fa-piggy-bank fa-3x mb-3"></i>
+        <!-- Savings -->
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
+            <div class="dashboard-box text-center p-4 shadow" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-piggy-bank fa-3x mb-3 text-success"></i>
                 <h3>Your Savings</h3>
                 <p>See how much you've saved by booking with us!</p>
                 <p><strong>Total Savings:</strong> ${{ savings }}</p>
             </div>
         </div>
 
-        <div class="col-md-6 mb-4">
-            <div class="dashboard-box" data-aos="fade-up" data-aos-delay="300">
-                <i class="fas fa-calendar-alt fa-3x mb-3"></i>
+        <!-- Rebook Flights -->
+        <div class="col-12 col-md-6 mb-4">
+            <div class="dashboard-box text-center p-4 shadow" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-calendar-alt fa-3x mb-3 text-warning"></i>
                 <h3>Rebook Flights</h3>
                 <p>Rebook any upcoming flight in case of changes or cancellations.</p>
-                <a href="{{ url_for('rebook_flight') }}" class="btn btn-warning">Rebook Now</a>
+                <a href="{{ url_for('rebook_flights') }}" class="btn btn-warning">Manage Flights</a>
             </div>
         </div>
 
-        <div class="col-md-6 mb-4">
-            <div class="dashboard-box" data-aos="fade-up" data-aos-delay="400">
-                <i class="fas fa-gift fa-3x mb-3"></i>
+        <!-- Coupons -->
+        <div class="col-12 col-md-6 mb-4">
+            <div class="dashboard-box text-center p-4 shadow" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-gift fa-3x mb-3 text-danger"></i>
                 <h3>Your Coupons</h3>
                 <p>Check out any free coupons you’ve earned due to service issues.</p>
                 <a href="{{ url_for('show_coupons') }}" class="btn btn-success">View Coupons</a>

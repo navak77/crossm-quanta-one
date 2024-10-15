@@ -1,0 +1,43 @@
+<!-- templates/change_flight.html -->
+{% extends "base.html" %}
+
+{% block title %}Change Flight - Airline Reservation System{% endblock %}
+
+{% block content %}
+    <h2>Change Flight</h2>
+    <p>Select an alternative flight:</p>
+    <form method="POST">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Airline</th>
+                    <th>Flight Number</th>
+                    <th>Origin</th>
+                    <th>Destination</th>
+                    <th>Departure Time</th>
+                    <th>Arrival Time</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for flight in alternatives %}
+                    <tr>
+                        <td>
+                            <input type="radio" name="new_flight_id" value="{{ flight.flight_id }}" required>
+                            <input type="hidden" name="price_{{ flight.flight_id }}" value="{{ flight.price }}">
+                        </td>
+                        <td>{{ flight.airline }}</td>
+                        <td>{{ flight.flight_number }}</td>
+                        <td>{{ flight.origin }}</td>
+                        <td>{{ flight.destination }}</td>
+                        <td>{{ flight.departure_time }}</td>
+                        <td>{{ flight.arrival_time }}</td>
+                        <td>${{ flight.price }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary">Confirm Change</button>
+    </form>
+{% endblock %}
