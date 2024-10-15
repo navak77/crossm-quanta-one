@@ -1,8 +1,8 @@
 Flask
-opensky-api
 flask-apscheduler
 amadeus
 Flask-Mail
 bcrypt
 python-dotenv
 google-generativeai
+git+https://github.com/openskynetwork/opensky-api-python.git
